@@ -1,0 +1,29 @@
+1)
+select distinct fabricante, pais
+from automoveis
+
+2)
+select distinct estado
+from automoveis as aut, garagens as gar, revendedoras rev
+where gar.codigo = aut.codigo
+and modelo = 'Elba' 
+and fabricante = 'Fiat' 
+and gar.cgc = rev.cgc
+
+
+3)
+select distinct a.cgc,a.nome, a.proprietario,a.estado
+from revendedoras a, revendedoras B
+where a.proprietario = b.proprietario and a.estado != b.estado
+
+4)
+select r.cgc, r.nome
+from revendedoras r, negocios n,automoveis a
+where a.ano = '95' 
+and (a.pais = 'Japao' or a.pais = 'EUA')
+and n.codigo = a.codigo
+and n.cgc = r.cgc
+and a.ano = n.ano
+and n.preco > a.preco_tabela
+and n.preco <= (1.3 * a.preco_tabela)
+
