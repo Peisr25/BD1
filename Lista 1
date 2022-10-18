@@ -27,3 +27,27 @@ and a.ano = n.ano
 and n.preco > a.preco_tabela
 and n.preco <= (1.3 * a.preco_tabela)
 
+5)
+select p.Num,d.Num
+from projeto p, departamento d
+where p.depNum = d.num
+
+6)
+select depen.nome, depen.parentesco, emp.ident ident_emp, emp.nome nome_Emp
+from empregado emp, dependente depen
+where depen.identemp = emp.ident
+
+7)
+select emp.nome, emp.sexo, sup.ident ident_superior, sup.nome nome_superior
+from empregado emp, empregado sup
+where emp.superident = sup.ident
+
+8)
+select distinct sal
+from empregado
+
+9)
+select distinct emp.nome
+from empregado emp, trabalhano trab
+where trab.hrs < 20
+and emp.ident = trab.identemp
