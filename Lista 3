@@ -1,0 +1,25 @@
+1)
+select distinct pessoa
+from gostam
+where cerveja in(
+select v.cerveja
+from venda v
+where bar = 'Padoca')
+
+2)
+select distinct pessoa
+from gostam
+where pessoa not in(
+select pessoa
+from gostam
+where cerveja not in(select cerveja
+from venda
+where bar = 'Padoca'))
+
+3)
+select distinct pessoa
+from gostam natural inner join venda
+where cerveja not in (
+select cerveja
+from venda
+where bar != 'Padoca')
