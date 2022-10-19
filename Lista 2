@@ -1,0 +1,53 @@
+1)
+select r.cgc,r.nome,r.cidade,r.estado
+from automoveis a, revendedoras r, negocios n
+where a.pais != 'Franca'
+and a.codigo = n.codigo
+and r.cgc = n.cgc
+
+2)
+select nome,sobrenome
+from consumidores
+where cpf not in (
+select cpf
+from negocios)
+
+3)
+SELECT fabricante, modelo, A1.ano
+FROM Automoveis as A1, Garagens as G1
+WHERE A1.codigo = G1.codigo AND A1.ano = G1.ano
+AND Preco_tabela <=ALL
+( SELECT Preco_tabela
+FROM Automoveis as A2, Garagens as G2
+WHERE A2.codigo = G2.codigo AND A2.ano = G2.ano )
+
+4)
+select distinct emp.nome
+from empregado emp, dependente dep
+where emp.ident not in(
+select identemp
+from dependente)
+
+5)
+select ident, nome
+from empregado
+where endereco like 'São%'
+
+6)
+select emp.nome, emp.sal salario
+from empregado emp, trabalhano trab, projeto proj
+where proj.nome = 'Reengenharia'
+and trab.projnum = proj.num
+and trab.identemp = emp.ident
+
+7)
+select emp.nome, (emp.sal * 1.1) salario 
+from empregado emp, trabalhano trab, projeto proj
+where proj.nome = 'Reengenharia'
+and trab.projnum = proj.num
+and trab.identemp = emp.ident
+
+8)
+( SELECT Local FROM PROJETO )
+UNION -- ou UNION ALL
+( SELECT Local FROM DEPLOC )
