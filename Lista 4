@@ -1,0 +1,16 @@
+1)
+select distinct emp.nome,emp.depnum
+from empregado emp,departamento dep
+where emp.ident = dep.identger
+
+2)
+select emp.nome,dep.nome
+from empregado emp, departamento dep
+where emp.depnum = dep.num
+and emp.sal> all(
+select emp.sal
+from empregado emp, departamento dep
+where emp.depnum= dep.num
+and dep.nome = 'Pesquisa')
+
+3)
